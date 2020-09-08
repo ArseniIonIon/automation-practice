@@ -1,7 +1,8 @@
 package com.automation_practice.hooks;
 
-import org.junit.After;
-import org.junit.Before;
+import com.automation_practice.utils.PageManager;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 
 import static com.automation_practice.browsers.Driver.getInstance;
 import static com.automation_practice.browsers.Driver.quit;
@@ -9,13 +10,18 @@ import static com.automation_practice.browsers.Driver.quit;
 public class Hooks {
 
     @Before
-    private void beforeAutomationPractice(){
+    public void initPages(){
+        PageManager.initPageClasses();
+    }
+
+    @Before
+    public void beforeAutomationPractice(){
         getInstance().get("http://automationpractice.com/");
     }
 
-    @After
-    private void afterAutomationPractice(){
+    /*@After
+    public void afterAutomationPractice(){
         quit();
-    }
+    }*/
 
 }
