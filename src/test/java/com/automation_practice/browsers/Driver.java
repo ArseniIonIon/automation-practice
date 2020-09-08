@@ -9,7 +9,7 @@ import java.util.Objects;
 public class Driver {
 
     private static final String CHROME_PROPERTY = "webdriver.chrome.driver";
-    private static final String CHROME_PATH = "src\\resources\\drivers\\chrome84\\chromedriver.exe";
+    private static final String CHROME_PATH = "src\\test\\resources\\drivers\\chrome84\\chromedriver.exe";
     private static WebDriver instance;
 
     private Driver(){

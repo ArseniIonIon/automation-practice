@@ -7,10 +7,10 @@ import java.util.concurrent.TimeUnit;
 
 public class Actions {
 
-    public static WebDriver driver = Driver.getInstance();
+    //public static WebDriver driver = Driver.getInstance();
 
     public static void wait(int seconds){
-        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+        Driver.getInstance().manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
     }
 
 }
