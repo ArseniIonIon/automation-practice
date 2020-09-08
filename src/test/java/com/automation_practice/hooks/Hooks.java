@@ -19,9 +19,9 @@ public class Hooks {
         getInstance().get("http://automationpractice.com/");
     }
 
-    /*@After
+    @After
     public void afterAutomationPractice(){
         quit();
-    }*/
+    }
 
 }
