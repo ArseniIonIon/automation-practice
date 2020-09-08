@@ -3,8 +3,14 @@ package com.automation_practice.actions;
 import com.automation_practice.browsers.Driver;
 import org.openqa.selenium.WebDriver;
 
+import java.util.concurrent.TimeUnit;
+
 public class Actions {
 
-    public WebDriver driver = Driver.getInstance();
+    public static WebDriver driver = Driver.getInstance();
+
+    public static void wait(int seconds){
+        driver.manage().timeouts().implicitlyWait(seconds, TimeUnit.SECONDS);
+    }
 
 }

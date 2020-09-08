@@ -8,6 +8,8 @@ public abstract class CorePage extends AbsPageFactory{
 
     @FindBy(className = "sf-with-ul")
     protected WebElement womenOptionMenuBar;
+    @FindBy (css = "header#header div.header_user_info > a")
+    protected WebElement signInBtn;
 
     public CorePage(WebDriver driver) {
         super(driver);
@@ -16,4 +18,9 @@ public abstract class CorePage extends AbsPageFactory{
     public WebElement getWomenOptionMenuBar() {
         return womenOptionMenuBar;
     }
+
+    public WebElement getSignInBtn() {
+        return signInBtn;
+    }
+
 }
