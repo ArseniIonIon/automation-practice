@@ -58,8 +58,9 @@ public class LoginPageActions {
     }
 
     public void typePassword(String psw){
-        LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
+        LoginPage loginPage = new LoginPage(getInstance());
         loginPage.getPasswordField().sendKeys(psw);
+        scenarioContext.saveData(CURRENT_PAGE,loginPage);
     }
 
 
