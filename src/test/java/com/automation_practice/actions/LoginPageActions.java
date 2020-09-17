@@ -3,10 +3,8 @@ package com.automation_practice.actions;
 
 
 import com.automation_practice.context.ScenarioContext;
-import com.automation_practice.context.ScenarioKeys.*;
 import com.automation_practice.pages.LoginPage;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -22,7 +20,7 @@ public class LoginPageActions {
     public void openSignInPage() {
         LoginPage loginPage = new LoginPage(getInstance());
         loginPage.getSignInBtn().click();
-        Actions.wait(10);
+        CommonActions.wait(10);
         scenarioContext.saveData(CURRENT_PAGE, loginPage);
     }
 
@@ -41,7 +39,7 @@ public class LoginPageActions {
     public void clickOnSignInBtn(){
         LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
         loginPage.getSubmitBtn().click();
-        Actions.wait(5);
+        CommonActions.wait(5);
     }
 
     public void checkErrorMessage(String errorMessage){
@@ -54,8 +52,9 @@ public class LoginPageActions {
     }
 
     public void typeEmail(String email){
-        LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
+        LoginPage loginPage = new LoginPage(getInstance());
         loginPage.getEmailField().sendKeys(email);
+        scenarioContext.saveData(CURRENT_PAGE,loginPage);
     }
 
     public void typePassword(String psw){

@@ -1,13 +1,19 @@
 package com.automation_practice.utils;
 
+import com.automation_practice.annotations.ElementAcccessot;
 import com.automation_practice.annotations.PageAccessor;
 import com.automation_practice.browsers.Driver;
+import com.automation_practice.context.ScenarioContext;
+import com.automation_practice.context.ScenarioKeys;
 import com.automation_practice.pages.AbsPageFactory;
 import com.sun.javafx.webkit.Accessor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
 import java.io.File;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +59,33 @@ public class PageManager {
         }
         return abstractPage;
     }
+
+    public static WebElement getPageElementByName(String name) throws IllegalAccessException {
+        ScenarioContext scenarioContext =  ScenarioContext.getScenarioContext();
+        Object currentPage = scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
+
+        Field[] declaredFields = currentPage.getClass().getDeclaredFields();
+
+
+        try {
+            for (Field field:declaredFields) {
+                ElementAcccessot annotation = field.getAnnotation(ElementAcccessot.class);
+                field.setAccessible(true);
+
+                if (annotation == null){
+                    continue;
+                }else if (annotation.elementName().equals(name)){
+
+                    return  (WebElement) field.get(currentPage);
+                }
+            }
+        }catch (IllegalAccessException e){
+            e.printStackTrace();
+        }
+
+        throw new RuntimeException("No field found with expected name : " + name);
+    }
+
     public static AbsPageFactory getPageByName(String pageName) {
         AbsPageFactory abstractPage = null;
         try {

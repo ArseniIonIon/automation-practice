@@ -7,5 +7,4 @@ import static com.automation_practice.browsers.Driver.getInstance;
 
 public class HomePageActions  {
 
-
 }

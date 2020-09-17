@@ -1,9 +1,9 @@
 package com.automation_practice.pages;
 
+import com.automation_practice.annotations.PageAccessor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-
 public abstract class CorePage extends AbsPageFactory{
 
     @FindBy(className = "sf-with-ul")
@@ -22,5 +22,7 @@ public abstract class CorePage extends AbsPageFactory{
     public WebElement getSignInBtn() {
         return signInBtn;
     }
+
+
 
 }
