@@ -31,9 +31,9 @@ public class Hooks {
         screenshot.makeAShot();
     }
 
-    @After
+   /* @After
     public void afterAutomationPractice(){
         quit();
-    }
+    }*/
 
 }

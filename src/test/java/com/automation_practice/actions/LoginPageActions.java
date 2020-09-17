@@ -20,7 +20,7 @@ public class LoginPageActions {
     public void openSignInPage() {
         LoginPage loginPage = new LoginPage(getInstance());
         loginPage.getSignInBtn().click();
-        Action.wait(10);
+        CommonActions.wait(10);
         scenarioContext.saveData(CURRENT_PAGE, loginPage);
     }
 
@@ -39,7 +39,7 @@ public class LoginPageActions {
     public void clickOnSignInBtn(){
         LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
         loginPage.getSubmitBtn().click();
-        Action.wait(5);
+        CommonActions.wait(5);
     }
 
     public void checkErrorMessage(String errorMessage){

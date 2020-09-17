@@ -25,5 +25,4 @@ public class HomePageActions  {
         Assert.assertEquals("Blouses - My Store",pageTitle);
     }
 
-
 }
