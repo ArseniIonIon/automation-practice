@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PageManager {
-    private static final String PATH_TO_PAGE_PAKAGES_1 = "C:\\ProjectsArseni\\automation-practice\\src\\test\\java\\com\\automation_practice\\pages\\";
+    private static final String PATH_TO_PAGE_PAKAGES_1 = "src\\test\\java\\com\\automation_practice\\pages\\";
     private static final String PATH_TO_PAGE_PAKAGES = "com.automation_practice.pages.";
 
 

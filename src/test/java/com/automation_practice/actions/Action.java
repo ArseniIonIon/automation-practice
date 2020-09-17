@@ -5,7 +5,7 @@ import org.openqa.selenium.WebDriver;
 
 import java.util.concurrent.TimeUnit;
 
-public class Actions {
+public class Action {
 
     //public static WebDriver driver = Driver.getInstance();
 
