@@ -6,8 +6,9 @@ import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.AfterStep;
 import cucumber.api.java.Before;
-import cucumber.api.java.BeforeStep;
 import gherkin.ast.Feature;
+
+import java.io.IOException;
 
 import static com.automation_practice.browsers.Driver.getInstance;
 import static com.automation_practice.browsers.Driver.quit;
@@ -16,12 +17,8 @@ public class Hooks {
     TakeScreenshot screenshot = new TakeScreenshot();
 
     @Before
-    public void initPage(){
+    public void beforeAutomationPractice() throws IOException {
         PageManager.initPageClasses();
-    }
-    @Before
-    public void beforeAutomationPractice(){
-
         getInstance().get("http://automationpractice.com/");
         screenshot.generateDirectory();
     }
@@ -31,9 +28,9 @@ public class Hooks {
         screenshot.makeAShot();
     }
 
-   /* @After
+    @After
     public void afterAutomationPractice(){
         quit();
-    }*/
+    }
 
 }

@@ -6,12 +6,10 @@ import com.automation_practice.browsers.Driver;
 import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
 import com.automation_practice.pages.AbsPageFactory;
-import com.sun.javafx.webkit.Accessor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.io.File;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;

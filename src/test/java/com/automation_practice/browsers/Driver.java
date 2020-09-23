@@ -1,6 +1,5 @@
 package com.automation_practice.browsers;
 
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
