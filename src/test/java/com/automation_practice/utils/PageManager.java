@@ -5,7 +5,7 @@ import com.automation_practice.annotations.PageAccessor;
 import com.automation_practice.browsers.Driver;
 import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
-import com.automation_practice.pages.AbsPageFactory;
+import com.automation_practice.pages.AbsPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
@@ -19,7 +19,6 @@ import java.util.List;
 public class PageManager {
     private static final String PATH_TO_PAGE_PAKAGES_1 = "src\\test\\java\\com\\automation_practice\\pages\\";
     private static final String PATH_TO_PAGE_PAKAGES = "com.automation_practice.pages.";
-
 
     private static final List<Class<?>> PAGE_CLASSES = new ArrayList<>();
 
@@ -35,8 +34,8 @@ public class PageManager {
         }
     }
 
-    public static AbsPageFactory getPage(String pageName) {
-        AbsPageFactory abstractPage = null;
+    public static AbsPage getPage(String pageName) {
+        AbsPage abstractPage = null;
         for (Class claz : PAGE_CLASSES) {
             PageAccessor annotation = (PageAccessor) claz.getAnnotation(PageAccessor.class);
 
@@ -44,7 +43,7 @@ public class PageManager {
             if (annotation!=null && pageName.equals(annotation.pageName()) ){
                 try {
                     Constructor constructor = claz.getConstructor(WebDriver.class);
-                    abstractPage = (AbsPageFactory) constructor.newInstance(Driver.getInstance());
+                    abstractPage = (AbsPage) constructor.newInstance(Driver.getInstance());
                     // to do, add postinit
                     break;
                 } catch (NoSuchMethodException |InstantiationException |IllegalAccessException| InvocationTargetException e) {
@@ -63,7 +62,6 @@ public class PageManager {
         Object currentPage = scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
 
         Field[] declaredFields = currentPage.getClass().getDeclaredFields();
-
 
         try {
             for (Field field:declaredFields) {
@@ -84,12 +82,12 @@ public class PageManager {
         throw new RuntimeException("No field found with expected name : " + name);
     }
 
-    public static AbsPageFactory getPageByName(String pageName) {
-        AbsPageFactory abstractPage = null;
+    public static AbsPage getPageByName(String pageName) {
+        AbsPage abstractPage = null;
         try {
             Class<?> cl = Class.forName(PATH_TO_PAGE_PAKAGES + pageName + "Page");
             Constructor constructor = cl.getConstructor(WebDriver.class);
-            abstractPage = (AbsPageFactory) constructor.newInstance(Driver.getInstance());
+            abstractPage = (AbsPage) constructor.newInstance(Driver.getInstance());
         } catch (ClassNotFoundException | InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException e) {
             e.printStackTrace();
         }

@@ -1,10 +1,9 @@
 package com.automation_practice.pages;
 
-import com.automation_practice.annotations.PageAccessor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-public abstract class CorePage extends AbsPageFactory{
+public abstract class CorePage extends AbsPage {
 
     @FindBy(xpath = "//a[contains(@title,'Women') and contains(@class, 'sf-with-ul')]")
     protected WebElement womenOptionMenuBar;
