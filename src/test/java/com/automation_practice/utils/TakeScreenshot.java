@@ -16,9 +16,8 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class TakeScreenshot {
-    private String feature = Feature.class.getName();
-    private String scenario = Scenario.class.getName();
-    private final String EVICENDE_DIRECTORY = "src\\test\\resources\\evidence\\";
+
+    private final String EVICENDE_DIRECTORY = "target\\evidence\\";
     private boolean directoryCreated = false;
     private String directoryPath;
 
@@ -28,10 +27,10 @@ public class TakeScreenshot {
         return formatter.format(time);
     }
 
-    public void generateDirectory() throws IOException {
+    public void generateDirectory(String featureName) throws IOException {
         try{
             if(!directoryCreated){
-                directoryPath = EVICENDE_DIRECTORY + "_" + feature + "_" + currentTime() ;
+                directoryPath = EVICENDE_DIRECTORY + "_" + featureName + "_" + currentTime() ;
                 Path path = Paths.get(directoryPath);
                 Files.createDirectories(path);
                 directoryCreated= true;
@@ -42,10 +41,10 @@ public class TakeScreenshot {
         }
     }
 
-    public void makeAShot(){
+    public void makeAShot(String scenarioName){
          try {
              Screenshot screenshot = new AShot().takeScreenshot(Driver.getInstance());
-             ImageIO.write(screenshot.getImage(), "png", new File(directoryPath +"\\" + scenario + "_" + currentTime() + ".png") );
+             ImageIO.write(screenshot.getImage(), "png", new File(directoryPath +"\\" + scenarioName + "_" + currentTime() + ".png") );
          } catch (IOException e){
              System.out.println(e);
          }

@@ -4,9 +4,7 @@ import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
 import com.automation_practice.pages.CheckoutPage;
 import com.automation_practice.pages.SummaryPage;
-import org.hamcrest.text.IsEqualIgnoringCase;
 import org.junit.Assert;
-import org.junit.internal.runners.SuiteMethod;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
