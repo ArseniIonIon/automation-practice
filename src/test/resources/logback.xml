@@ -1,0 +1,24 @@
+<configuration>
+    <property scope="context" name="log-pattern" value="%d{yyyy-MM-dd} | %d{HH:mm:ss.SSS} | %thread | %5p | %logger{25} | %m%n"/>
+    <property scope="context" name="logger-folder" value="target/logs/"/>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+    <appender name="ConsoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${log-pattern}</pattern>
+        </encoder>
+    </appender>
+    <appender name="GlobalExecutionAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${logger-folder}execution-%d{yyyy-MM-dd}-global.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${log-pattern}</pattern>
+        </encoder>
+    </appender>
+    <root level="INFO">
+        <appender-ref ref="ConsoleAppender"/>
+        <appender-ref ref="GlobalExecutionAppender"/>
+    </root>
+
+</configuration>
