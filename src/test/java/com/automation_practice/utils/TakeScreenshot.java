@@ -1,8 +1,11 @@
 package com.automation_practice.utils;
 
 import com.automation_practice.browsers.Driver;
+import com.automation_practice.steps.LoginSteps;
 import gherkin.ast.Feature;
 import gherkin.ast.Scenario;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
 
@@ -20,6 +23,8 @@ public class TakeScreenshot {
     private final String EVICENDE_DIRECTORY = "target\\evidence\\";
     private boolean directoryCreated = false;
     private String directoryPath;
+    private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
+
 
     public String currentTime(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
@@ -36,7 +41,7 @@ public class TakeScreenshot {
                 directoryCreated= true;
             }
         } catch (IOException e){
-
+            logger.error("The directory was not created");
             throw e;
         }
     }
@@ -46,6 +51,7 @@ public class TakeScreenshot {
              Screenshot screenshot = new AShot().takeScreenshot(Driver.getInstance());
              ImageIO.write(screenshot.getImage(), "png", new File(directoryPath +"\\" + scenarioName + "_" + currentTime() + ".png") );
          } catch (IOException e){
+             logger.error("Could not create/save screenshot");
              System.out.println(e);
          }
     }
