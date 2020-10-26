@@ -1,8 +1,7 @@
 package com.automation_practice.pages;
 
-import com.automation_practice.annotations.ElementAcccessot;
+import com.automation_practice.annotations.ElementAccessor;
 import com.automation_practice.annotations.PageAccessor;
-import com.automation_practice.browsers.Driver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,20 +16,20 @@ public class CheckoutPage extends CorePage {
     @FindBy(id = "homefeatured")
     protected  WebElement productCategoryList;
 
-    @ElementAcccessot(elementName = "Add to cart button")
     @FindBy(xpath = ".//a[@title='Add to cart']")
     protected WebElement addToCart;
 
     @FindBy(className = "clearfix")
     protected WebElement addCartPopUp;
 
+    @ElementAccessor(elementName = "Add to cart button")
     @FindBy(xpath = "//a[@title='Proceed to checkout']")
     protected WebElement procedtoCheckOut;
+
+    @ElementAccessor(elementName = "Sign in")
+
     @FindBy(id = "cart_title")
     protected WebElement anchorElement;
-
-
-
 
     @Override
     public WebElement getAnchorElement() {
@@ -48,7 +47,6 @@ public class CheckoutPage extends CorePage {
     public WebElement getAddCartPopUp() {
         return addCartPopUp;
     }
-
 
     public WebElement getAddToCart() {
         return addToCart;

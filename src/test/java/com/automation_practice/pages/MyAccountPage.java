@@ -21,3 +21,9 @@ public class MyAccountPage extends CorePage {
         super(driver);
     }
 }
+
+
+
+
+
+

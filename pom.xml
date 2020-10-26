@@ -23,13 +23,13 @@
         <cucumber.version>4.4.0</cucumber.version>
     </properties>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot -->
+         <!--https://mvnrepository.com/artifact/ru.yandex.qatools.ashot/ashot-->
         <dependency>
             <groupId>ru.yandex.qatools.ashot</groupId>
             <artifactId>ashot</artifactId>
             <version>1.5.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
+       <!--  https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-remote-driver -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-remote-driver</artifactId>

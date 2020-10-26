@@ -1,5 +1,6 @@
 package com.automation_practice.pages;
 
+import com.automation_practice.annotations.ElementAccessor;
 import com.automation_practice.annotations.PageAccessor;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -19,11 +20,13 @@ public class LoginPage extends CorePage {
     @FindBy(css = "#center_column > div.alert.alert-danger")
     private WebElement errorMessage;
 
+    @ElementAccessor(elementName = "Sign In")
     @FindBy(id = "SubmitLogin")
     private WebElement submitBtn;
 
     @FindBy(id = "email")
     private WebElement anchorElement;
+
 
     @Override
     public WebElement getAnchorElement() {
