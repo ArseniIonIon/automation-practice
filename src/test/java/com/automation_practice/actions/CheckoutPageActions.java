@@ -6,6 +6,7 @@ import com.automation_practice.pages.CheckoutPage;
 import com.automation_practice.pages.SummaryPage;
 import org.junit.Assert;
 import org.openqa.selenium.By;
+
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
@@ -30,7 +31,6 @@ public class CheckoutPageActions {
         scenarioContext.saveData(ScenarioKeys.CURRENT_PAGE, checkoutPage);
 
     }
-
     public void addProductToCart(String productName){
         CheckoutPage checkoutPage = (CheckoutPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
         List<WebElement> categoryProducts = checkoutPage.getProductCategoryList();
@@ -44,12 +44,9 @@ public class CheckoutPageActions {
                 break;
             }
         }
-
     }
-
     public void popUpDisplayed(){
         CheckoutPage checkoutPage = (CheckoutPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
-        //CommonActions.waitVisible(checkoutPage.getAddToCart(),3);
         CommonActions.wait(5);
         Assert.assertTrue(checkoutPage.getAddCartPopUp().isDisplayed());
     }
@@ -63,15 +60,9 @@ public class CheckoutPageActions {
 
     public void verifyProductSummaryTab(String productName){
         SummaryPage summaryPage = new SummaryPage(getInstance());
+        scenarioContext.saveData(ScenarioKeys.CURRENT_PAGE,summaryPage);
         String expectedProductName = summaryPage.getProductNameSummary().getText();
         Assert.assertEquals(productName,expectedProductName);
-        scenarioContext.saveData(ScenarioKeys.CURRENT_PAGE,summaryPage);
-    }
 
-    public void clickCheckOutBtn(){
-        SummaryPage summaryPage = (SummaryPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
-        CommonActions.scrollToElement(summaryPage.getCheckoutBtn());
-        summaryPage.getCheckoutBtn().click();
     }
-
 }

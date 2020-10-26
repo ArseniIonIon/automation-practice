@@ -9,15 +9,15 @@ public class ScenarioContext {
     private Map<ScenarioKeys,Object> data;
     private static ScenarioContext instance;
 
-    public ScenarioContext() {
+    private ScenarioContext() {
         this.data = new HashMap<>();
     }
 
     public static ScenarioContext getScenarioContext(){
         if (Objects.isNull(instance)){
-            return new ScenarioContext();
+            instance = new ScenarioContext();
         }
-        return instance;
+        return  instance;
     }
 
     public Object getData(ScenarioKeys key){

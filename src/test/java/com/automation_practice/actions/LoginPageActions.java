@@ -3,7 +3,9 @@ package com.automation_practice.actions;
 
 
 import com.automation_practice.context.ScenarioContext;
+import com.automation_practice.pages.CorePage;
 import com.automation_practice.pages.LoginPage;
+import com.automation_practice.utils.PageManager;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
 
@@ -17,15 +19,14 @@ public class LoginPageActions {
 
     private ScenarioContext scenarioContext = getScenarioContext();
 
-    public void openSignInPage() {
-        LoginPage loginPage = new LoginPage(getInstance());
-        loginPage.getSignInBtn().click();
-        CommonActions.wait(10);
-        scenarioContext.saveData(CURRENT_PAGE, loginPage);
+    public void openSignInPage(String name) throws IllegalAccessException {
+        PageManager.getPageElementByName(name).click();
+        CommonActions.wait(5);
     }
 
-    public void verifyEmptyEmailField() {
-        LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
+    public void verifyEmptyEmailField(){
+        LoginPage loginPage = new LoginPage(getInstance());
+        scenarioContext.saveData(CURRENT_PAGE,loginPage);
         WebElement emailField = loginPage.getEmailField();
         Assert.assertTrue(emailField.isDisplayed() && emailField.getText().isEmpty());
     }
@@ -36,7 +37,7 @@ public class LoginPageActions {
         Assert.assertTrue(pswField.isDisplayed() && pswField.getText().isEmpty());
     }
 
-    public void clickOnSignInBtn(){
+    public void clickOnSignInBtn(String btnName){
         LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
         loginPage.getSubmitBtn().click();
         CommonActions.wait(5);
