@@ -37,10 +37,10 @@ public class LoginSteps {
         loginPage.verifyEmptyPasswordField();
     }
 
-    @When("user clicks on {string} button")
+    /*@When("user clicks on {string} button")
     public void clickOnEnter(String btnName) {
         loginPage.clickOnSignInBtn(btnName);
-    }
+    }*/
 
     @Then("the error message: {string} is displayed")
     public void errorMessageDisplayed(String errorMsg) {
@@ -57,10 +57,8 @@ public class LoginSteps {
         loginPage.typePassword(psw);
     }
 
-
-
     @And("the user is on {} page")
-    public void myAccountPageIsDisplayed    (String pageName) {
+    public void myAccountPageIsDisplayed (String pageName) {
         Assert.assertTrue(String.format("Expected %s page is displayed", pageName),
                 PageManager.getPage(pageName).getAnchorElement().isDisplayed());
     }

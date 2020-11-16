@@ -1,6 +1,5 @@
 package com.automation_practice.utils;
 
-import com.automation_practice.actions.CommonActions;
 import com.automation_practice.annotations.ElementAccessor;
 import com.automation_practice.annotations.PageAccessor;
 import com.automation_practice.browsers.Driver;
@@ -20,17 +19,16 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class PageManager {
-    private static final String PATH_TO_PAGE_PAKAGES_1 = "src\\test\\java\\com\\automation_practice\\pages\\";
-    private static final String PATH_TO_PAGE_PAKAGES = "com.automation_practice.pages.";
-
     private static final List<Class<?>> PAGE_CLASSES = new ArrayList<>();
+    static PropertyParser propertyParser = new PropertyParser();
+    private static String path_to_packages = propertyParser.getProps("path_to_packages");
+    private static String path_to_pages  = propertyParser.getProps("path_to_pages");
 
-    public static void initPageClasses() {
-        File directory = new File(PATH_TO_PAGE_PAKAGES_1);
+    public static void initPageClasses() { File directory = new File(path_to_packages);
         File[] files = directory.listFiles();
         for (File file : files) {
             try {
-                Class<?> clazz = Class.forName(PATH_TO_PAGE_PAKAGES + file.getName().replace(".java", ""));
+                Class<?> clazz = Class.forName(path_to_pages + file.getName().replace(".java", ""));
                 PAGE_CLASSES.add(clazz);
             } catch (ClassNotFoundException e) {
             }

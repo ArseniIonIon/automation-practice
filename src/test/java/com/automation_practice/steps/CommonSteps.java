@@ -23,6 +23,7 @@ public class CommonSteps {
 
     @Then("the {string} page is displayed")
     public void pageDisplayed(String pageName) {
+        CommonActions.scrollToElement(PageManager.getPage(pageName).getAnchorElement());
         Assert.assertTrue(String.format("Expected %s page is displayed", pageName),
                 PageManager.getPage(pageName).getAnchorElement().isDisplayed());
         scenarioContext.saveData(ScenarioKeys.CURRENT_PAGE,PageManager.getPage(pageName));

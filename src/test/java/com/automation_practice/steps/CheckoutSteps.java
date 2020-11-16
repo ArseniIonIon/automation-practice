@@ -12,12 +12,6 @@ public class CheckoutSteps {
 
     CheckoutPageActions checkoutPage = new CheckoutPageActions();
 
-   /* @Given("the {} page is displayed")
-    public void isDisplayed(String pageName){
-        Assert.assertTrue(String.format("Expected %S is displayed", pageName),
-                PageManager.getPage(pageName).getAnchorElement().isDisplayed());
-    }*/
-
     @When("the user goes to {} products")
     public void theUserGoesToPopularProducts(String category) {
         checkoutPage.clickOnProductType(category);
@@ -51,12 +45,13 @@ public class CheckoutSteps {
         checkoutPage.verifyProductSummaryTab(productName);
     }
 
-
-
-    @Then("the {string} tab is displayed")
-    public void theAddressTabIsDisplayed(String orderStepName) {
-
+    @Then("order details are displayed")
+    public void orderDetailsAreDisplayed() {
+        checkoutPage.getReferenceCode();
     }
 
-
+    @And("the product is present in the list")
+    public void theProductIsPresentInTheList() {
+        checkoutPage.verifyAddedProduct();
+    }
 }
