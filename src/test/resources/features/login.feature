@@ -8,7 +8,6 @@ Feature: Login
     And the field email is empty
     And the field password is empty
 
-
   Scenario:Error on empty fields
     When user clicks on Sign In button
     Then the error message: "An email address required." is displayed

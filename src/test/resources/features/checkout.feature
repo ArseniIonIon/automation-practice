@@ -1,5 +1,3 @@
-# new feature
-# Tags: optional
 @checkout
 Feature: Buy product
 
@@ -24,6 +22,14 @@ Feature: Buy product
     When user clicks on Terms of service button
     And user clicks on Checkout button
     Then the 'Payment' page is displayed
+    When user clicks on Pay by check button
+    And user clicks on I confirm my order button
+    Then order details are displayed
+    When user clicks on Back to orders button
+    Then the 'Orders' page is displayed
+    And the product is present in the list
+
+
 
     
 
