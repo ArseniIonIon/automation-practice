@@ -18,15 +18,15 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-public class TakeScreenshot {
+public class ScreenshotMaker {
 
-    private final String EVICENDE_DIRECTORY = "target\\evidence\\";
+    private final String EVIDENCE_DIRECTORY = "target\\evidence\\";
     private boolean directoryCreated = false;
     private String directoryPath;
     private static final Logger logger = LoggerFactory.getLogger(LoginSteps.class);
 
 
-    public String currentTime(){
+    private String currentTime(){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
         LocalDateTime time = LocalDateTime.now();
         return formatter.format(time);
@@ -35,7 +35,7 @@ public class TakeScreenshot {
     public void generateDirectory(String featureName) throws IOException {
         try{
             if(!directoryCreated){
-                directoryPath = EVICENDE_DIRECTORY + "_" + featureName + "_" + currentTime() ;
+                directoryPath = EVIDENCE_DIRECTORY + "_" + featureName + "_" + currentTime() ;
                 Path path = Paths.get(directoryPath);
                 Files.createDirectories(path);
                 directoryCreated= true;

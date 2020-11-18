@@ -20,7 +20,7 @@ public class LoginPage extends CorePage {
     @FindBy(css = "#center_column > div.alert.alert-danger")
     private WebElement errorMessage;
 
-    @ElementAccessor(elementName = "Sign In")
+    @ElementAccessor(elementName = "Sign In button")
     @FindBy(id = "SubmitLogin")
     private WebElement submitBtn;
 

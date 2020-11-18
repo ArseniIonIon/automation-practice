@@ -37,5 +37,4 @@ public class CommonActions {
     public WebElement getChildElement(WebElement element) {
         return element.findElement(By.xpath("."));
     }
-
 }
