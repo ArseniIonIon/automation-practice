@@ -44,12 +44,12 @@ public class LoginSteps {
         logger.info("Password field is empty");
     }
 
-    @When("user clicks on {string} button")
+   /* @When("user clicks on {string} button")
     public void clickOnEnter(String btnName) {
         loginPage.clickOnSignInBtn(btnName);
         logger.info("user clicks on " + btnName + " button");
 
-    }
+    }*/
 
     @Then("the error message: {string} is displayed")
     public void errorMessageDisplayed(String errorMsg) {

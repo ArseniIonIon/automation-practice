@@ -4,7 +4,6 @@ import com.automation_practice.actions.CommonActions;
 import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
 import com.automation_practice.utils.PageManager;
-import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.junit.Assert;
@@ -14,7 +13,7 @@ public class CommonSteps {
 
     ScenarioContext scenarioContext = ScenarioContext.getScenarioContext();
 
-    @When("user clicks on {} button")
+    @When("user clicks on {}")
     public void userClickOnButton(String name) throws IllegalAccessException {
         WebElement element = PageManager.getPageElementByName(name);
         CommonActions.scrollToElement(element);
@@ -27,4 +26,9 @@ public class CommonSteps {
                 PageManager.getPage(pageName).getAnchorElement().isDisplayed());
         scenarioContext.saveData(ScenarioKeys.CURRENT_PAGE,PageManager.getPage(pageName));
     }
+
+//    @When("user navigate to the {} page")
+//    public void navigateToPage(String pageName){
+//
+//    }
 }

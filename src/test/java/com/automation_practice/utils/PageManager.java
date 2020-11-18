@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 public class PageManager {
-    private static final String PATH_TO_PAGE_PAKAGES_1 = "src\\test\\java\\com\\automation_practice\\pages\\";
+    private static final String PATH_TO_PAGE_PAKAGES_1 = "src/test/java/com/automation_practice/pages/";
     private static final String PATH_TO_PAGE_PAKAGES = "com.automation_practice.pages.";
 
     private static final List<Class<?>> PAGE_CLASSES = new ArrayList<>();
@@ -61,10 +61,13 @@ public class PageManager {
     }
 
     private static Field[] getDeclaredFields(Object obj) {
+        Field[] declaredFieldsFromSuperSuper = obj.getClass().getSuperclass().getSuperclass().getDeclaredFields();
         Field[] declaredFieldsFromSuper = obj.getClass().getSuperclass().getDeclaredFields();
         Field[] declaredFields = obj.getClass().getDeclaredFields();
 
-        return Stream.concat(Arrays.stream(declaredFieldsFromSuper), Arrays.stream(declaredFields))
+        return Stream.concat(
+                Stream.concat(Arrays.stream(declaredFieldsFromSuperSuper),Arrays.stream(declaredFieldsFromSuper)),
+                Arrays.stream(declaredFields))
                 .toArray(Field[]::new);
     }
 

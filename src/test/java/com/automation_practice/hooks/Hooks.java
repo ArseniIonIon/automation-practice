@@ -4,7 +4,7 @@ import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
 import com.automation_practice.pages.AutomationPracticePage;
 import com.automation_practice.utils.PageManager;
-import com.automation_practice.utils.TakeScreenshot;
+import com.automation_practice.utils.ScreenshotMaker;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.AfterStep;
@@ -16,7 +16,7 @@ import static com.automation_practice.browsers.Driver.getInstance;
 import static com.automation_practice.browsers.Driver.quit;
 
 public class Hooks {
-    TakeScreenshot screenshot = new TakeScreenshot();
+    ScreenshotMaker screenshot = new ScreenshotMaker();
     ScenarioContext scenarioContext = ScenarioContext.getScenarioContext();
     private Scenario scenario;
 
@@ -38,6 +38,13 @@ public class Hooks {
     @After
     public void afterAutomationPractice(){
         quit();
+    }
+
+    @After(value = "@ClearWishlist")
+    public void removeDefaultWishlist(){
+
+
+
     }
 
 }

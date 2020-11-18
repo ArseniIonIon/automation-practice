@@ -10,7 +10,7 @@ Feature: Login
 
 
   Scenario:Error on empty fields
-    When user clicks on 'Sign In' button
+    When user clicks on Sign In button
     Then the error message: "An email address required." is displayed
 
   Scenario: Wrong Password
@@ -22,7 +22,7 @@ Feature: Login
   Scenario: Login successfully
     When user types "arseniion2@gmail.com" in email field
     And  types "1q2w3e4r" in password field
-    And user clicks on 'Sign In' button
+    And user clicks on Sign In button
     Then the user is on MyAccount page
 
 

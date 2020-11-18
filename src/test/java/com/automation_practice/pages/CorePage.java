@@ -1,12 +1,12 @@
 package com.automation_practice.pages;
 
 import com.automation_practice.annotations.ElementAccessor;
-import com.automation_practice.annotations.PageAccessor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 public abstract class CorePage extends AbsPage {
 
+    @ElementAccessor(elementName = "Women category")
     @FindBy(xpath = "//a[contains(@title,'Women') and contains(@class, 'sf-with-ul')]")
     protected WebElement womenOptionMenuBar;
 
@@ -16,9 +16,11 @@ public abstract class CorePage extends AbsPage {
     @FindBy(xpath = "//a[contains(@class, 'sf-with-ul')]/..//ul/li/a[contains(@title,'Blouses')]")
     protected WebElement blousesWomenSubMenu;
 
+    @ElementAccessor(elementName = "Dresses category")
     @FindBy(xpath = "//a[contains(@title,'Dresses') and contains(@class, 'sf-with-ul')]")
     protected    WebElement dressesOptionMenuBar;
 
+    @ElementAccessor(elementName = "T-Shirt category")
     @FindBy(xpath = "//*[@id=\"block_top_menu\"]/ul/li[3]/a")
     protected  WebElement tShirtOptionMenuBar;
 
@@ -28,6 +30,10 @@ public abstract class CorePage extends AbsPage {
     @ElementAccessor(elementName = "Sign in")
     @FindBy (css = "header#header div.header_user_info > a")
     protected WebElement signInBtn;
+
+    @ElementAccessor(elementName = "My Account button")
+    @FindBy(xpath = "//a[@class='account']")
+    private WebElement myAccountButton;
 
 
     public CorePage(WebDriver driver) {
@@ -66,4 +72,9 @@ public abstract class CorePage extends AbsPage {
     public WebElement getPageTitle(){
         return pageTitle;
     }
+
+    public WebElement getMyAccountButton() {
+        return myAccountButton;
+    }
+
 }
