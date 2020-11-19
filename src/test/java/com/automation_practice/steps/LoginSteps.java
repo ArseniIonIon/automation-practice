@@ -11,12 +11,8 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.junit.Assert;
-import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.TimeUnit;
 
 public class LoginSteps {
 
@@ -44,13 +40,6 @@ public class LoginSteps {
         logger.info("Password field is empty");
     }
 
-   /* @When("user clicks on {string} button")
-    public void clickOnEnter(String btnName) {
-        loginPage.clickOnSignInBtn(btnName);
-        logger.info("user clicks on " + btnName + " button");
-
-    }*/
-
     @Then("the error message: {string} is displayed")
     public void errorMessageDisplayed(String errorMsg) {
         loginPage.checkErrorMessage(errorMsg);
@@ -67,12 +56,5 @@ public class LoginSteps {
     public void typesInPasswordField(String psw) {
         loginPage.typePassword(psw);
         logger.info("Password inserted");
-    }
-
-    @And("the user is on {} page")
-    public void myAccountPageIsDisplayed (String pageName) {
-        Assert.assertTrue(String.format("Expected %s page is displayed", pageName),
-                PageManager.getPage(pageName).getAnchorElement().isDisplayed());
-        logger.info("Expected " + pageName + " page is displayed");
     }
 }

@@ -47,4 +47,9 @@ public class Hooks {
 
     }
 
+    @After(value = "@cleanCart")
+    public void deleteProductFromCart(){
+
+    }
+
 }

@@ -37,18 +37,11 @@ public class LoginPageActions {
         Assert.assertTrue(pswField.isDisplayed() && pswField.getText().isEmpty());
     }
 
-    public void clickOnSignInBtn(String btnName){
-        LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
-        loginPage.getSubmitBtn().click();
-        CommonActions.wait(5);
-    }
-
     public void checkErrorMessage(String errorMessage){
         LoginPage loginPage = (LoginPage) scenarioContext.getData(CURRENT_PAGE);
         List<WebElement> liElem = loginPage.getErrorMessages();
         for (WebElement element:liElem) {
             Assert.assertEquals(element.getText(), errorMessage);
-            System.out.println(element.getText());
         }
     }
 

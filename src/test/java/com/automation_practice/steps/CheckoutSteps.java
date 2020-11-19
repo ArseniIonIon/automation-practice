@@ -1,6 +1,6 @@
 package com.automation_practice.steps;
 
-import com.automation_practice.actions.CheckoutPageActions;
+import com.automation_practice.actions.CheckoutActions;
 import com.automation_practice.utils.PageManager;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -12,13 +12,7 @@ import org.slf4j.LoggerFactory;
 public class CheckoutSteps {
     private final Logger logger = (Logger) LoggerFactory.getLogger(CheckoutSteps.class);
 
-    private CheckoutPageActions checkoutPage = new CheckoutPageActions();
-
-   /* @Given("the {} page is displayed")
-    public void isDisplayed(String pageName){
-        Assert.assertTrue(String.format("Expected %S is displayed", pageName),
-                PageManager.getPage(pageName).getAnchorElement().isDisplayed());
-    }*/
+   private CheckoutActions checkoutActions = new CheckoutActions();
 
     @When("the user goes to {} products")
     public void theUserGoesToPopularProducts(String category) {
@@ -52,12 +46,19 @@ public class CheckoutSteps {
     }
 
     @And("the {string} is present on the card summary")
-    public void theBlouseIsPresentOnTheCardSummary(String productName) {
-        checkoutPage.verifyProductSummaryTab(productName);
+    public void theProductIsPresentOnTheCardSummary(String productName) {
+        checkoutActions.verifyProductSummaryTab(productName);
         logger.info("The " + productName + " is present on the card summary");
     }
 
-    @Then("the {string} tab is displayed")
-    public void theAddressTabIsDisplayed(String orderStepName) {
+    @Then("order details are displayed")
+    public void orderDetailsAreDisplayed() {
+        checkoutActions.extractAndSaveReferenceCode();
+        //TODO assert?
+    }
+
+    @And("the order is present in the list")
+    public void theProductIsPresentInTheList() {
+        checkoutActions.verifyAddedProduct();
     }
 }

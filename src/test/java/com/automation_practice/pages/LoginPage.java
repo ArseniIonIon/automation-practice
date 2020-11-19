@@ -27,14 +27,9 @@ public class LoginPage extends CorePage {
     @FindBy(id = "email")
     private WebElement anchorElement;
 
-
     @Override
     public WebElement getAnchorElement() {
         return anchorElement;
-    }
-
-    public WebElement getSubmitBtn() {
-        return submitBtn;
     }
 
     public List<WebElement> getErrorMessages() {
@@ -52,6 +47,4 @@ public class LoginPage extends CorePage {
     public LoginPage(WebDriver driver) {
         super(driver);
     }
-
-
 }

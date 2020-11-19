@@ -27,7 +27,7 @@ public abstract class CorePage extends AbsPage {
     @FindBy(xpath = "/html/head/title")
     protected WebElement pageTitle;
 
-    @ElementAccessor(elementName = "Sign in")
+    @ElementAccessor(elementName = "Sign In button")
     @FindBy (css = "header#header div.header_user_info > a")
     protected WebElement signInBtn;
 
