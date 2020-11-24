@@ -13,28 +13,21 @@ public class ShippingPage extends CorePage {
     @FindBy(xpath = "//*[@id=\"form\"]/div/div[2]")
     protected WebElement anchorElement;
 
-    @ElementAccessor(elementName = "Terms of service")
+    @ElementAccessor(elementName = "Terms of service button")
     @FindBy(id = "cgv")
     protected WebElement checkboxTerms;
 
-    @ElementAccessor(elementName = "Checkout")
+    @ElementAccessor(elementName = "Checkout button")
     @FindBy(css = "form#form button[type=\"submit\"] > span")
     protected WebElement checkoutBtn;
 
-    public WebElement getCheckoutBtn() {
-        return checkoutBtn;
+    public ShippingPage(WebDriver driver) {
+        super(driver);
     }
 
-    public WebElement getCheckboxTerms() {
-        return checkboxTerms;
-    }
     @Override
     public WebElement getAnchorElement() {
         return anchorElement;
-    }
-
-    public ShippingPage(WebDriver driver) {
-        super(driver);
     }
 
 

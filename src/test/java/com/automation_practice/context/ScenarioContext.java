@@ -9,7 +9,7 @@ public class ScenarioContext {
     private Map<ScenarioKeys,Object> data;
     private static ScenarioContext instance;
 
-    private ScenarioContext() {
+    public ScenarioContext() {
         this.data = new HashMap<>();
     }
 
@@ -27,6 +27,4 @@ public class ScenarioContext {
     public void saveData(ScenarioKeys key, Object object){
         data.put(key,object);
     }
-
-
 }

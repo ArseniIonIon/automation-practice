@@ -17,18 +17,15 @@ public class MyAccountPage extends CorePage {
     private WebElement wishlistButton;
 
 
+    public MyAccountPage(WebDriver driver) {
+        super(driver);
+    }
+
     @Override
     public WebElement getAnchorElement() {
         return anchorElement;
     }
 
-    public MyAccountPage(WebDriver driver) {
-        super(driver);
-    }
-
-    public WebElement getWishlistButton() {
-        return wishlistButton;
-    }
 }
 
 

@@ -5,8 +5,8 @@ Feature: Wishlist validation
     Given the 'AutomationPractice' page is displayed
     And the User clicks on Sign in
     And the 'Login' page is displayed
-    And user types "arseniion2@gmail.com" in email field
-    And  types "1q2w3e4r" in password field
+    When user types "arseniion2@gmail.com" in 'Email field'
+    And  user types "1q2w3e4r" in "Password field"
     And user clicks on Sign In button
 
 

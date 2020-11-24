@@ -8,24 +8,31 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 import java.util.List;
+
 @PageAccessor(pageName = "Login")
 public class LoginPage extends CorePage {
 
+    @ElementAccessor(elementName = "Email field")
     @FindBy(id = "email")
     private WebElement emailField;
 
+    @ElementAccessor(elementName = "Password field")
     @FindBy(id = "passwd")
     private WebElement passwordField;
 
     @FindBy(css = "#center_column > div.alert.alert-danger")
     private WebElement errorMessage;
 
-    @ElementAccessor(elementName = "Sign In button")
+    @ElementAccessor(elementName = "Log In button")
     @FindBy(id = "SubmitLogin")
     private WebElement submitBtn;
 
     @FindBy(id = "email")
     private WebElement anchorElement;
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+    }
 
     @Override
     public WebElement getAnchorElement() {
@@ -34,17 +41,5 @@ public class LoginPage extends CorePage {
 
     public List<WebElement> getErrorMessages() {
         return errorMessage.findElements(By.tagName("li"));
-    }
-
-    public WebElement getEmailField() {
-        return emailField;
-    }
-
-    public WebElement getPasswordField() {
-        return passwordField;
-    }
-
-    public LoginPage(WebDriver driver) {
-        super(driver);
     }
 }

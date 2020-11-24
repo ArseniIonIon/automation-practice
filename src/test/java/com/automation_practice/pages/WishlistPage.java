@@ -19,26 +19,25 @@ public class WishlistPage extends CorePage {
         super(driver);
     }
 
-    public WebElement getWishlistTable(){
+    public WebElement getWishlistTable() {
         return wishlistTable;
     }
 
-    public List<WebElement> getWishlists(){
+    public List<WebElement> getWishlists() {
         return wishlistTable.findElements(By.xpath("tr"));
     }
 
-    public WebElement getWishlistFromTableByName(String wishlistName){
-        return getWishlistTable().findElement(By.xpath("..//td/a[contains(text(),'"+ wishlistName + "')]"));
+    public WebElement getWishlistFromTableByName(String wishlistName) {
+        return getWishlistTable().findElement(By.xpath("..//td/a[contains(text(),'" + wishlistName + "')]"));
     }
 
-    public long getWishlistQty(String wishlistName){
+    public long getWishlistQty(String wishlistName) {
         return Long.valueOf(getWishlistFromTableByName(wishlistName).findElement(By.xpath("../../td[2]")).getText());
     }
 
-    public List<WebElement> getWishlistProductList(){
-        return  wishlistProductList.findElements(By.tagName("li"));
+    public List<WebElement> getWishlistProductList() {
+        return wishlistProductList.findElements(By.tagName("li"));
     }
-
 
 
 //    public WebElement getWishlistProductByTitle(String productTitle){
