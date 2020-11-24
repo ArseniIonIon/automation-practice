@@ -1,8 +1,10 @@
 package com.automation_practice.hooks;
 
+import com.automation_practice.actions.CheckoutActions;
 import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
 import com.automation_practice.pages.AutomationPracticePage;
+import com.automation_practice.steps.CommonSteps;
 import com.automation_practice.utils.PageManager;
 import com.automation_practice.utils.ScreenshotMaker;
 import cucumber.api.Scenario;
@@ -16,9 +18,11 @@ import static com.automation_practice.browsers.Driver.getInstance;
 import static com.automation_practice.browsers.Driver.quit;
 
 public class Hooks {
-    ScreenshotMaker screenshot = new ScreenshotMaker();
-    ScenarioContext scenarioContext = ScenarioContext.getScenarioContext();
+    private ScreenshotMaker screenshot = new ScreenshotMaker();
+    private ScenarioContext scenarioContext = ScenarioContext.getScenarioContext();
     private Scenario scenario;
+    private CommonSteps commonSteps = new CommonSteps();
+    private CheckoutActions checkoutActions = new CheckoutActions();
 
 
     @Before
@@ -35,16 +39,22 @@ public class Hooks {
         screenshot.makeAShot(scenario.getName());
     }
 
-    @After
-    public void afterAutomationPractice(){
-        quit();
+    @After(value = "@cleanCart", order = 2)
+    public void deleteProductFromCart() throws InterruptedException {
+        Thread.sleep(10);
+        commonSteps.userClickOnButton("Delete button");
+        checkoutActions.verifyEmptyCart();
+
     }
 
     @After(value = "@ClearWishlist")
     public void removeDefaultWishlist(){
 
-
-
     }
 
+    @After(order = 1)
+    public void afterAutomationPractice()
+    {
+        quit();
+    }
 }

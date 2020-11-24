@@ -1,6 +1,10 @@
 package com.automation_practice.steps;
 
-import com.automation_practice.actions.CheckoutPageActions;
+import com.automation_practice.actions.CheckoutActions;
+import com.automation_practice.context.ProductType;
+import com.automation_practice.context.ScenarioContext;
+import com.automation_practice.context.ScenarioKeys;
+import com.automation_practice.pages.ProductPage;
 import com.automation_practice.utils.PageManager;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Then;
@@ -9,38 +13,36 @@ import org.junit.Assert;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class CheckoutSteps {
-    private final Logger logger = (Logger) LoggerFactory.getLogger(CheckoutSteps.class);
+    private final Logger logger = LoggerFactory.getLogger(CheckoutSteps.class);
 
-    private CheckoutPageActions checkoutPage = new CheckoutPageActions();
+   private CheckoutActions checkoutActions = new CheckoutActions();
+   private ScenarioContext scenarioContext = ScenarioContext.getScenarioContext();
 
-   /* @Given("the {} page is displayed")
-    public void isDisplayed(String pageName){
-        Assert.assertTrue(String.format("Expected %S is displayed", pageName),
-                PageManager.getPage(pageName).getAnchorElement().isDisplayed());
-    }*/
 
     @When("the user goes to {} products")
-    public void theUserGoesToPopularProducts(String category) {
-        checkoutPage.clickOnProductType(category);
-        logger.info("The user goes to " + category + " products");
+    public void theUserGoesToProductType(ProductType productType) {
+        checkoutActions.clickOnProductType(productType);
+        logger.info("The user goes to " + productType + " products");
+        scenarioContext.saveData(ScenarioKeys.PRODUCT_TYPE,productType);
     }
 
-    @And("add {string} product to cart")
+    @Then("add {string} product to cart")
     public void clicksOnProduct(String name) {
-        checkoutPage.addProductToCart(name);
+        checkoutActions.addProductToCart(name);
         logger.info("add "+ name + " product to cart");
     }
 
     @Then("the product is successfully added to cart")
     public void popUpDisplayed() {
-        checkoutPage.popUpDisplayed();
+        checkoutActions.popUpDisplayed();
         logger.info("The product is successfully added to cart");
     }
 
     @When("user goes to checkout process")
     public void userGoesToCheckoutProcess() {
-        checkoutPage.procedToCheckout();
+        checkoutActions.proceedToCheckout();
         logger.info("User goes to checkout process");
     }
 
@@ -51,13 +53,21 @@ public class CheckoutSteps {
         logger.info("The " + pageName + " steps are displayed");
     }
 
-    @And("the {string} is present on the card summary")
-    public void theBlouseIsPresentOnTheCardSummary(String productName) {
-        checkoutPage.verifyProductSummaryTab(productName);
+    @Then("the {string} is present on the card summary")
+    public void theProductIsPresentOnTheCardSummary(String productName) {
+        checkoutActions.verifyProductInSummaryTab(productName);
         logger.info("The " + productName + " is present on the card summary");
     }
 
-    @Then("the {string} tab is displayed")
-    public void theAddressTabIsDisplayed(String orderStepName) {
+    @Then("order details are displayed")
+    public void orderDetailsAreDisplayed() {
+        checkoutActions.extractAndSaveReferenceCode();
+
     }
+
+    @Then("the order is present in the list")
+    public void theProductIsPresentInTheList() {
+        checkoutActions.verifyAddedProduct();
+    }
+
 }
