@@ -18,33 +18,28 @@ import static com.automation_practice.browsers.Driver.getInstance;
 import static com.automation_practice.browsers.Driver.quit;
 
 public class Hooks {
-    private ScreenshotMaker screenshot = new ScreenshotMaker();
+    private ScreenshotMaker screenshotMaker = new ScreenshotMaker();
     private ScenarioContext scenarioContext = ScenarioContext.getScenarioContext();
-    private Scenario scenario;
     private CommonSteps commonSteps = new CommonSteps();
     private CheckoutActions checkoutActions = new CheckoutActions();
-
 
     @Before
     public void beforeAutomationPractice() throws IOException {
         PageManager.initPageClasses();
         getInstance().get("http://automationpractice.com/");
-        screenshot.generateDirectory("feature");
+        screenshotMaker.generateDirectory("feature");
         scenarioContext.saveData(ScenarioKeys.CURRENT_PAGE,new AutomationPracticePage(getInstance()));
     }
 
     @AfterStep
     public void afterStepScreenshot(Scenario scenario){
-        this.scenario = scenario;
-        screenshot.makeAShot(scenario.getName());
+        screenshotMaker.makeAShot(scenario.getName());
     }
 
     @After(value = "@cleanCart", order = 2)
-    public void deleteProductFromCart() throws InterruptedException {
-        Thread.sleep(10);
+    public void deleteProductFromCart() {
         commonSteps.userClickOnButton("Delete button");
         checkoutActions.verifyEmptyCart();
-
     }
 
     @After(value = "@ClearWishlist")
@@ -53,8 +48,7 @@ public class Hooks {
     }
 
     @After(order = 1)
-    public void afterAutomationPractice()
-    {
+    public void afterAutomationPractice() {
         quit();
     }
 }

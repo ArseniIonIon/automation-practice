@@ -10,26 +10,24 @@ import org.openqa.selenium.support.FindBy;
 public class PaymentPage extends CorePage {
 
     @FindBy(id = "cart_summary")
-    protected WebElement anchorElement;
+    private WebElement anchorElement;
 
-    @ElementAccessor(elementName = "Pay by bank wire button")
-    @FindBy(css = "div#HOOK_PAYMENT div:nth-child(1) > div > p > a")
-    protected WebElement bankPaymentType;
+    @FindBy(className = "bankwire")
+    private WebElement bankPaymentType;
 
-    @ElementAccessor(elementName = "Pay by check button")
-    @FindBy(css = "div#HOOK_PAYMENT div:nth-child(2) > div > p > a")
-    protected WebElement ticketPaymentType;
+    @FindBy(className = "cheque")
+    private WebElement ticketPaymentType;
 
     @ElementAccessor(elementName = "I confirm my order button")
     @FindBy(css = "#cart_navigation > button")
     protected WebElement confirmOrder;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/div")
-    protected WebElement orderDetails;
+    private WebElement orderDetails;
 
     @ElementAccessor(elementName = "Back to orders button")
     @FindBy(css = "div#center_column p > a")
-    protected WebElement backToOrdersBtn;
+    private WebElement backToOrdersBtn;
 
     public PaymentPage(WebDriver driver) {
         super(driver);
@@ -37,6 +35,14 @@ public class PaymentPage extends CorePage {
 
     public WebElement getOrderDetails() {
         return orderDetails;
+    }
+
+    public WebElement getBankPaymentType() {
+        return bankPaymentType;
+    }
+
+    public WebElement getTicketPaymentType() {
+        return ticketPaymentType;
     }
 
     @Override

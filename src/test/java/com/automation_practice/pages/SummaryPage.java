@@ -11,20 +11,20 @@ public class SummaryPage extends CorePage {
 
     @ElementAccessor(elementName = "Delete button")
     @FindBy(xpath =  "//*[@id=\"cart_summary\"]/tbody/tr[1]/td[7]" )
-    protected WebElement deleteBtn;
+    private WebElement deleteBtn;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/p")
-    protected WebElement emptyCartAlert;
+    private WebElement emptyCartAlert;
 
     @ElementAccessor(elementName = "Checkout button")
     @FindBy(xpath = "//*[@id=\"center_column\"]/p[2]/a[1]")
-    protected WebElement checkoutBtn;
+    private WebElement checkoutBtn;
 
     @FindBy(xpath = "//*[@id=\"cart_summary\"]/tbody/tr[1]/td[2]/p")
-    protected WebElement productNameSummary;
+    private WebElement productNameSummary;
 
     @FindBy(xpath = "//*[@id=\"center_column\"]/h1")
-    protected WebElement anchorElement;
+    private WebElement anchorElement;
 
     public SummaryPage(WebDriver driver) {
         super(driver);
