@@ -3,6 +3,8 @@ package com.automation_practice.steps;
 import com.automation_practice.actions.CommonActions;
 import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
+import com.automation_practice.utils.PageManager;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebElement;

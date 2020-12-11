@@ -18,7 +18,7 @@ public abstract class CorePage extends AbsPage {
     protected WebElement blousesWomenSubMenu;
 
     @ElementAccessor(elementName = "Dresses category")
-    @FindBy(xpath = "//a[contains(@title,'Dresses') and contains(@class, 'sf-with-ul')]")
+    @FindBy(xpath = "//ul[contains(@class, 'sf-menu clearfix menu-content sf-js-enabled sf-arrows')]/li[2]//a[@class='sf-with-ul' and @title='Dresses']")
     protected WebElement dressesOptionMenuBar;
 
     @ElementAccessor(elementName = "T-Shirt category")
@@ -55,6 +55,4 @@ public abstract class CorePage extends AbsPage {
     public WebElement getPageTitle() {
         return pageTitle;
     }
-
-
 }

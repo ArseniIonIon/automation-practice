@@ -8,10 +8,9 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
         features = {"src/test/resources/features"},
         glue = {"com.automation_practice"},
-        tags = ("@checkout"),
+        tags = ("@wishlist"),
         plugin = {"pretty", "html:target/cucumber-report"}
 )
-
 public class TestRunner {
 
 }
