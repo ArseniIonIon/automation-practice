@@ -7,13 +7,11 @@ import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import java.util.List;
-
 import static com.automation_practice.browsers.Driver.getInstance;
 import static com.automation_practice.context.ScenarioContext.getScenarioContext;
 import static com.automation_practice.context.ScenarioKeys.CURRENT_PAGE;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.is;
 
 public class WishlistPageActions {
 
@@ -24,7 +22,6 @@ public class WishlistPageActions {
         TShirtPage tShirtPage = new TShirtPage(getInstance());
         scenarioContext.saveData(CURRENT_PAGE,tShirtPage);
         tShirtPage.gettShirtOptionMenuBar().click();
-        CommonActions.wait(5);
         String pageTitle = tShirtPage.getPageTitle().toString().trim();
         Assert.assertEquals("T-shirts - My Store",pageTitle);
     }

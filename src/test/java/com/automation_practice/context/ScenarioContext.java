@@ -6,25 +6,25 @@ import java.util.Objects;
 
 public class ScenarioContext {
 
-    private Map<ScenarioKeys,Object> data;
     private static ScenarioContext instance;
+    private Map<ScenarioKeys, Object> data;
 
     public ScenarioContext() {
         this.data = new HashMap<>();
     }
 
-    public static ScenarioContext getScenarioContext(){
-        if (Objects.isNull(instance)){
+    public static ScenarioContext getScenarioContext() {
+        if (Objects.isNull(instance)) {
             instance = new ScenarioContext();
         }
-        return  instance;
+        return instance;
     }
 
-    public Object getData(ScenarioKeys key){
+    public Object getData(ScenarioKeys key) {
         return data.get(key);
     }
 
-    public void saveData(ScenarioKeys key, Object object){
-        data.put(key,object);
+    public void saveData(ScenarioKeys key, Object object) {
+        data.put(key, object);
     }
 }

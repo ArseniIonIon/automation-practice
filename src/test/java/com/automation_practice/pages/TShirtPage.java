@@ -9,7 +9,7 @@ import org.openqa.selenium.support.FindBy;
 public class TShirtPage extends ProductPage {
 
     @FindBy(xpath = "//span[@class='category-name' and contains(text(),'T-shirts')]")
-    protected WebElement anchorElement;
+    private WebElement anchorElement;
 
     public TShirtPage(WebDriver driver) {
         super(driver);

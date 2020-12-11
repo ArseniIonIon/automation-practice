@@ -3,7 +3,7 @@ Feature: Wishlist validation
 
   Background:
     Given the 'AutomationPractice' page is displayed
-    And the User clicks on Sign in
+    And user clicks on Sign in
     And the 'Login' page is displayed
     When user types "arseniion2@gmail.com" in 'Email field'
     And  user types "1q2w3e4r" in "Password field"
@@ -18,7 +18,7 @@ Feature: Wishlist validation
     When user adds Faded Short Sleeve T-shirts product to Wishlist
     Then popup with Added to your wishlist. message is displayed
     When user closes the popup
-    And the User clicks on My Account button
+    And user clicks on My Account button
     When the 'MyAccount' page is displayed
     And user clicks on My Wishlist button
     Then the default Wishlist table is displayed

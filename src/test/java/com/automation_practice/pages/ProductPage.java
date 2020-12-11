@@ -13,11 +13,11 @@ import java.util.List;
 public class ProductPage extends CorePage {
 
     @FindBy(xpath = "//ul[contains(@class,'product_list')]")
-    protected WebElement productList;
+    private WebElement productList;
 
     @ElementAccessor(elementName = "list button")
     @FindBy(id = "list")
-    protected WebElement displayProductsInList;
+    private WebElement displayProductsInList;
 
     @FindBy(xpath = "//div[@class='fancybox-outer']/div/p")
     private WebElement addToWishlistPopupText;
@@ -32,6 +32,7 @@ public class ProductPage extends CorePage {
     public List<WebElement> getProductList() {
         return productList.findElements(By.tagName("li"));
     }
+
     public WebElement getDisplayProductsInList(){
         return displayProductsInList;
     }

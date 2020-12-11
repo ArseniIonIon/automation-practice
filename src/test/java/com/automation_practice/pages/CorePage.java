@@ -36,16 +36,13 @@ public abstract class CorePage extends AbsPage {
     @FindBy(xpath = "//a[@class='account']")
     private WebElement myAccountButton;
 
-
     public CorePage(WebDriver driver) {
         super(driver);
     }
 
-
     public WebElement getWomenOptionMenuBar() {
         return womenOptionMenuBar;
     }
-
 
     public WebElement getBlousesWomenSubMenu() {
         return blousesWomenSubMenu;

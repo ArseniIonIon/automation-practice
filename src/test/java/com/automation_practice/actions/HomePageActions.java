@@ -22,7 +22,6 @@ public class HomePageActions  {
         action.moveToElement(automationPracticePage.getWomenOptionMenuBar()).build().perform();
         automationPracticePage.getBlousesWomenSubMenu().click();
         scenarioContext.saveData(CURRENT_PAGE, automationPracticePage);
-        CommonActions.wait(4);
         Assert.assertEquals("Blouses - My Store",pageTitle);
     }
 
