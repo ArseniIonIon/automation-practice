@@ -9,7 +9,7 @@ Feature: Buy product
     Then the product is successfully added to cart
     When user goes to checkout process
     Then the 'Summary' page is displayed
-    And the 'Printed Chiffon Dress' is present on the card summary
+    And the 'Printed Chiffon Dress' is present on the cart summary
 
   @checkout
   Scenario: Product checkout
@@ -19,7 +19,7 @@ Feature: Buy product
     Then the product is successfully added to cart
     When user goes to checkout process
     Then the 'Summary' page is displayed
-    And the 'Blouse' is present on the card summary
+    And the 'Blouse' is present on the cart summary
     When user clicks on Checkout button
     Then the 'Login' page is displayed
     When user types "arseniion2@gmail.com" in 'Email field'
@@ -46,7 +46,7 @@ Feature: Buy product
     Then the product is successfully added to cart
     When user goes to checkout process
     Then the 'Summary' page is displayed
-    And the '<Product>' is present on the card summary
+    And the '<Product>' is present on the cart summary
     When user clicks on Checkout button
     Then the 'Login' page is displayed
     When user types "arseniion2@gmail.com" in 'Email field'
@@ -70,12 +70,18 @@ Feature: Buy product
       | BEST_SELLERS     | Blouse                | PAY_BY_BANK  |
       | POPULAR          | Printed Chiffon Dress | PAY_BY_CHECK |
 
-
-
-
-
-    
-
-
-
-
+    @cleanCart
+    Scenario: Validate product price on checkout
+      Given the 'AutomationPractice' page is displayed
+      And user clicks on Women category
+      And the 'Women' page is displayed
+      And user clicks on list button
+      And user adds Blouse product to cart
+      And user clicks on Continue Shopping button
+      And user adds Faded Short Sleeve T-shirts product to cart
+      And user clicks on Add to cart button
+      Then the 'Summary' page is displayed
+      And the 'Blouse' is present on the cart summary
+      And the 'Faded Short Sleeve T-shirts' is present on the cart summary
+      And the price is equal to 43.51
+      

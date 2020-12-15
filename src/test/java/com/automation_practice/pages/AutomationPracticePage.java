@@ -32,7 +32,6 @@ public class AutomationPracticePage extends CorePage {
     @FindBy(xpath = "//a[@title='Proceed to checkout']")
     private WebElement procedtoCheckOut;
 
-
     public AutomationPracticePage(WebDriver driver) {
         super(driver);
     }

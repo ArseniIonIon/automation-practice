@@ -4,15 +4,13 @@ import com.automation_practice.context.PaymentType;
 import com.automation_practice.context.ProductType;
 import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
-import com.automation_practice.pages.AutomationPracticePage;
-import com.automation_practice.pages.OrdersPage;
-import com.automation_practice.pages.PaymentPage;
-import com.automation_practice.pages.SummaryPage;
+import com.automation_practice.pages.*;
 import org.openqa.selenium.WebElement;
 
 import java.util.Arrays;
 import java.util.List;
 
+import static com.automation_practice.context.ScenarioKeys.CURRENT_PAGE;
 import static com.automation_practice.context.ScenarioKeys.PRODUCT_TYPE;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -93,5 +91,22 @@ public class CheckoutActions {
         SummaryPage summaryPage = (SummaryPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
         commonActions.waitUntilElementDisplayed(summaryPage.getEmptyCartAlert());
         assertThat(summaryPage.getEmptyCartAlert().isDisplayed(), is(true));
+    }
+
+    public void verifyTotalPriceForProducts(double price){
+        SummaryPage summaryPage = (SummaryPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
+        commonActions.waitUntilElementDisplayed(summaryPage.getTotalPriceForProducts());
+        String stringPrice = summaryPage.getTotalPriceForProducts().getText().replace("$","");
+        Double doublePrice = Double.parseDouble(stringPrice);
+        assertThat("The price is right", price,is(doublePrice));
+    }
+
+    public void productIsPresentInCart(String productTitle) {
+        SummaryPage summaryPage = (SummaryPage) scenarioContext.getData(CURRENT_PAGE);
+
+        commonActions.waitUntilElementDisplayed(summaryPage.getListOfProducts());
+
+        assertThat("The product is displayed in cart",summaryPage.getProductByName(productTitle).isDisplayed(),is(true));
+
     }
 }

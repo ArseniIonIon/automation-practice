@@ -10,7 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import java.util.List;
 
 @PageAccessor(pageName = "Product")
-public class ProductPage extends CorePage {
+public class    ProductPage extends CorePage {
 
     @FindBy(className = "product_list row list")
     private WebElement productList;
@@ -28,18 +28,16 @@ public class ProductPage extends CorePage {
     @FindBy(xpath = "//a[contains(@class, 'fancybox-item fancybox-close')]")
     private WebElement closePopupButton;
 
+    @ElementAccessor(elementName = "Continue Shopping button")
+    @FindBy(xpath = "//span[contains(@title,'Continue shopping')]")
+    private  WebElement continueShoppingButton;
+
+    @ElementAccessor(elementName = "Add to cart button")
+    @FindBy(xpath = "//a[@title='Proceed to checkout']")
+    private WebElement procedtoCheckOut;
+
     public ProductPage(WebDriver driver) {
         super(driver);
-    }
-
-    //TODO Can it be removed?
-    public List<WebElement> getProductList() {
-        return productList.findElements(By.xpath("..//div[contains(@class,'product-container')]"));
-    }
-
-    //TODO Can it be removed?
-    public WebElement getDisplayProductsInList(){
-        return displayProductsInList;
     }
 
     public WebElement getAddToWishlistPopupText() {
@@ -55,6 +53,10 @@ public class ProductPage extends CorePage {
 
     public WebElement getToProductWishlistButton(WebElement productElement){
         return productElement.findElement(By.xpath("..//a[contains(@class,'addToWishlist')]"));
+    }
+
+    public WebElement getToProductAddToCartButton(WebElement productElement){
+        return productElement.findElement(By.xpath("..//a[contains(@title,'Add to cart')]"));
     }
 
     public WebElement getClosePopupButton() {

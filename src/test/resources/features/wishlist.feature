@@ -31,7 +31,7 @@ Feature: Wishlist validation
       And user clicks on Save button
       Then new wishlist with title testlist is displayed
       When user clicks on Dresses category
-      And the 'Women' page is displayed
+      And the 'Dresses' page is displayed
       And user clicks on list button
       And  user adds Blouse product to Wishlist
       Then popup with Added to your wishlist. message is displayed

@@ -48,11 +48,6 @@ public class WishlistPage extends CorePage {
         return wishlistTable;
     }
 
-    //TODO Can it be removed?
-    public List<WebElement> getWishlists() {
-        return wishlistTable.findElements(By.xpath("tr"));
-    }
-
     public WebElement getWishlistFromTableByName(String wishlistName) {
         return getWishlistTable().findElement(By.xpath("..//td/a[contains(text(),'" + wishlistName + "')]"));
     }
@@ -67,11 +62,6 @@ public class WishlistPage extends CorePage {
 
     public long getWishlistQty(String wishlistName) {
         return Long.valueOf(getWishlistFromTableByName(wishlistName).findElement(By.xpath("../../td[2]")).getText());
-    }
-
-    //TODO Can it be removed?
-    public WebElement getInputListName(){
-        return inputListName;
     }
 
     public WebElement getWishlistProductList(){
