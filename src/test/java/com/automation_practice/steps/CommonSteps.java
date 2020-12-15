@@ -3,11 +3,14 @@ package com.automation_practice.steps;
 import com.automation_practice.actions.CommonActions;
 import com.automation_practice.context.ScenarioContext;
 import com.automation_practice.context.ScenarioKeys;
+import com.automation_practice.pages.SummaryPage;
 import com.automation_practice.utils.PageManager;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 import static com.automation_practice.utils.PageManager.getPage;
 import static com.automation_practice.utils.PageManager.getPageElementByName;
@@ -24,8 +27,16 @@ public class CommonSteps {
     @When("user clicks on {}")
     public void userClickOnButton(String name) {
         WebElement element = getPageElementByName(name);
+        commonActions.waitUntilElementDisplayed(element);
         commonActions.scrollToElement(element);
         element.click();
+    }
+
+    @When("user deletes all products from cart")
+    public void userDeletesAllProductsFromCart() {
+        SummaryPage summaryPage = (SummaryPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
+        List<WebElement> deleteButtonsList = summaryPage.getDeleteButtonsList();
+        deleteButtonsList.forEach(WebElement::click);
     }
 
     @Then("the {string} page is displayed")

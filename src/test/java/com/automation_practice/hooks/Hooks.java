@@ -45,7 +45,8 @@ public class Hooks {
 
     @After(value = "@cleanCart", order = 2)
     public void deleteProductFromCart() {
-        commonSteps.userClickOnButton("Delete button");
+//        commonSteps.userClickOnButton("Delete button");
+        commonSteps.userDeletesAllProductsFromCart();
         checkoutActions.verifyEmptyCart();
     }
 

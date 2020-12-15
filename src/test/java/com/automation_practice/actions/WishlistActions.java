@@ -2,10 +2,11 @@ package com.automation_practice.actions;
 
 import com.automation_practice.browsers.Driver;
 import com.automation_practice.context.ScenarioContext;
-import com.automation_practice.pages.TShirtPage;
+import com.automation_practice.context.ScenarioKeys;
+import com.automation_practice.pages.ProductPage;
 import com.automation_practice.pages.WishlistPage;
 import com.automation_practice.utils.PageManager;
-import org.junit.Assert;
+import org.hamcrest.CoreMatchers;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -22,17 +23,8 @@ import static org.hamcrest.Matchers.is;
 public class WishlistActions {
 
     private ScenarioContext scenarioContext = getScenarioContext();
-    private CommonActions commonActions = new CommonActions();
 
-    //TODO Can be removed?
-    public void addToWishlist(String productName) {
-        TShirtPage tShirtPage = new TShirtPage(getInstance());
-        WishlistPage wishlistPage = (WishlistPage) scenarioContext.getData(CURRENT_PAGE);
-        tShirtPage.gettShirtOptionMenuBar().click();
-        String pageTitle = tShirtPage.getPageTitle().toString().trim();
-        //TODO assertThat
-        Assert.assertEquals("T-shirts - My Store", pageTitle);
-    }
+    private CommonActions commonActions = new CommonActions();
 
     public void checktWishlistTable() {
         WishlistPage wishlistPage = (WishlistPage) scenarioContext.getData(CURRENT_PAGE);
@@ -97,6 +89,31 @@ public class WishlistActions {
                 .findElement(By.id("s_title")).getText();
 
         assertThat("Wishlist have expected product", targetElement.toString().trim(), is(productTitle));
+    }
+
+    public void addToWishlist(String productName){
+        ProductPage productPage = (ProductPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
+
+        WebElement productElement = productPage.getProductByName(productName);
+        productPage.getToProductWishlistButton(productElement).click();
+    }
+
+    public void addToCart(String productName){
+        ProductPage productPage = (ProductPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
+        WebElement productElement = productPage.getProductByName(productName);
+        productPage.getToProductAddToCartButton(productElement).click();
+    }
+
+    public void popupMessage(String popupText){
+        ProductPage productPage = (ProductPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
+        commonActions.waitUntilElementDisplayed(productPage.getAddToWishlistPopupText());
+        assertThat("Popup is displayed", productPage.getAddToWishlistPopupText().getText(), CoreMatchers.is(popupText));
+    }
+
+    public void closeWishlistPopup(){
+        ProductPage productPage = (ProductPage) scenarioContext.getData(ScenarioKeys.CURRENT_PAGE);
+        commonActions.moveToElement(productPage.getClosePopupButton());
+        productPage.getClosePopupButton().click();
     }
 
 }
