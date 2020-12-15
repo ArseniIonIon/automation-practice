@@ -12,26 +12,32 @@ import java.util.List;
 @PageAccessor(pageName = "Product")
 public class ProductPage extends CorePage {
 
-    @FindBy(xpath = "//ul[contains(@class,'product_list')]")
-    protected WebElement productList;
+    @FindBy(className = "product_list row list")
+    private WebElement productList;
+
+    @FindBy(className = "product-container")
+    private List<WebElement> listOfProducts;
 
     @ElementAccessor(elementName = "list button")
     @FindBy(id = "list")
-    protected WebElement displayProductsInList;
+    private WebElement displayProductsInList;
 
-    @FindBy(xpath = "//div[@class='fancybox-outer']/div/p")
+    @FindBy(className = "fancybox-error")
     private WebElement addToWishlistPopupText;
 
-    @FindBy(xpath = "//div[@class='fancybox-skin']/a")
+    @FindBy(xpath = "//a[contains(@class, 'fancybox-item fancybox-close')]")
     private WebElement closePopupButton;
 
     public ProductPage(WebDriver driver) {
         super(driver);
     }
 
+    //TODO Can it be removed?
     public List<WebElement> getProductList() {
-        return productList.findElements(By.tagName("li"));
+        return productList.findElements(By.xpath("..//div[contains(@class,'product-container')]"));
     }
+
+    //TODO Can it be removed?
     public WebElement getDisplayProductsInList(){
         return displayProductsInList;
     }
@@ -41,8 +47,7 @@ public class ProductPage extends CorePage {
     }
 
     public WebElement getProductByName(String productName){
-
-       return getProductList().stream()
+       return listOfProducts.stream()
                .filter(element -> element.findElement(By.className("product-name")).getText().contains(productName))
                .findFirst()
                .orElseThrow(()->new RuntimeException("Such element does not exists - " + productName));

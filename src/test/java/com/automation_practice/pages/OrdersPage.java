@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 @PageAccessor(pageName = "Orders")
 public class OrdersPage extends CorePage {
     @FindBy(id = "order-list")
-    protected WebElement anchorElement;
+    private WebElement anchorElement;
     @FindBy(xpath = "//*[@id=\"order-list\"]/tbody/tr[1]/td[1]/a")
-    protected WebElement firstProduct;
+    private WebElement firstProduct;
 
     public OrdersPage(WebDriver driver) {
         super(driver);

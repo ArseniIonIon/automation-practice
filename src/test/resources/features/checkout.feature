@@ -1,4 +1,4 @@
-@checkout
+@checkout1
 Feature: Buy product
 
   @cleanCart
@@ -11,6 +11,7 @@ Feature: Buy product
     Then the 'Summary' page is displayed
     And the 'Printed Chiffon Dress' is present on the card summary
 
+  @checkout
   Scenario: Product checkout
     Given the 'AutomationPractice' page is displayed
     When the user goes to BEST_SELLERS products
@@ -30,12 +31,44 @@ Feature: Buy product
     When user clicks on Terms of service button
     And user clicks on Checkout button
     Then the 'Payment' page is displayed
-    When user clicks on Pay by check button
+    When user selects payment type PAY_BY_BANK
+
     And user clicks on I confirm my order button
     Then order details are displayed
     When user clicks on Back to orders button
     Then the 'Orders' page is displayed
     And the order is present in the list
+
+  Scenario Outline: Products checkout
+    Given the 'AutomationPractice' page is displayed
+    When the user goes to <Product Category> products
+    And add '<Product>' product to cart
+    Then the product is successfully added to cart
+    When user goes to checkout process
+    Then the 'Summary' page is displayed
+    And the '<Product>' is present on the card summary
+    When user clicks on Checkout button
+    Then the 'Login' page is displayed
+    When user types "arseniion2@gmail.com" in 'Email field'
+    And user types "1q2w3e4r" in 'Password field'
+    And  user clicks on Log In button
+    Then the 'Address' page is displayed
+    When user clicks on Checkout button
+    Then the 'Shipping' page is displayed
+    When user clicks on Terms of service button
+    And user clicks on Checkout button
+    Then the 'Payment' page is displayed
+    When user selects payment type <Payment Type>
+    And user clicks on I confirm my order button
+    Then order details are displayed
+    When user clicks on Back to orders button
+    Then the 'Orders' page is displayed
+    And the order is present in the list
+
+    Examples:
+      | Product Category | Product               | Payment Type |
+      | BEST_SELLERS     | Blouse                | PAY_BY_BANK  |
+      | POPULAR          | Printed Chiffon Dress | PAY_BY_CHECK |
 
 
 

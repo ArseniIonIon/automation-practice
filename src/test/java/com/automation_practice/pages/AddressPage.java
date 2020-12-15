@@ -9,10 +9,10 @@ import org.openqa.selenium.support.FindBy;
 @PageAccessor(pageName = "Address")
 public class AddressPage extends CorePage {
     @FindBy(id = "uniform-id_address_delivery")
-    protected WebElement anchorElement;
+    private WebElement anchorElement;
     @ElementAccessor(elementName = "Checkout button")
     @FindBy(xpath = "//*[@type='submit' and @name='processAddress']")
-    protected WebElement checkoutBtn;
+    private WebElement checkoutBtn;
 
     public AddressPage(WebDriver driver) {
         super(driver);

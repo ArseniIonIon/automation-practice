@@ -15,7 +15,7 @@ public class ShippingPage extends CorePage {
 
     @ElementAccessor(elementName = "Terms of service button")
     @FindBy(id = "cgv")
-    protected WebElement checkboxTerms;
+    private WebElement checkboxTerms;
 
     @ElementAccessor(elementName = "Checkout button")
     @FindBy(css = "form#form button[type=\"submit\"] > span")

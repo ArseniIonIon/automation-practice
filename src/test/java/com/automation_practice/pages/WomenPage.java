@@ -5,13 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-@PageAccessor(pageName = "T-Shirt")
-public class TShirtPage extends ProductPage {
+@PageAccessor(pageName = "Women")
+public class WomenPage extends ProductPage {
 
-    @FindBy(xpath = "//span[@class='category-name' and contains(text(),'T-shirts')]")
+    @FindBy(className = "category-name")
     private WebElement anchorElement;
 
-    public TShirtPage(WebDriver driver) {
+    public WomenPage(WebDriver driver) {
         super(driver);
     }
 

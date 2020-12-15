@@ -3,8 +3,6 @@ package com.automation_practice.pages;
 import com.automation_practice.annotations.ElementAccessor;
 import com.automation_practice.annotations.PageAccessor;
 import com.automation_practice.context.ProductType;
-import com.automation_practice.context.ScenarioContext;
-import com.automation_practice.context.ScenarioKeys;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -16,23 +14,23 @@ import java.util.List;
 public class AutomationPracticePage extends CorePage {
 
     @FindBy(id = "homeslider")
-    protected WebElement anchorElement;
+    private WebElement anchorElement;
 
     @FindBy(id = "homefeatured")
-    protected WebElement productCategoryPopularList;
+    private WebElement productCategoryPopularList;
 
     @FindBy(id = "blockbestsellers")
-    protected WebElement productCategoryBestSellerList;
+    private WebElement productCategoryBestSellerList;
 
     @FindBy(id = "home-page-tabs")
-    protected WebElement productCategory;
+    private WebElement productCategory;
 
     @FindBy(className = "clearfix")
-    protected WebElement addCartPopUp;
+    private WebElement addCartPopUp;
 
     @ElementAccessor(elementName = "Add to cart button")
     @FindBy(xpath = "//a[@title='Proceed to checkout']")
-    protected WebElement procedtoCheckOut;
+    private WebElement procedtoCheckOut;
 
 
     public AutomationPracticePage(WebDriver driver) {
