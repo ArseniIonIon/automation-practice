@@ -84,4 +84,3 @@ Feature: Buy product
       And the 'Blouse' is present on the cart summary
       And the 'Faded Short Sleeve T-shirts' is present on the cart summary
       And the price is equal to 43.51
-      
