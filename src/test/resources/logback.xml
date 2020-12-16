@@ -20,5 +20,9 @@
         <appender-ref ref="ConsoleAppender"/>
         <appender-ref ref="GlobalExecutionAppender"/>
     </root>
+    <root level="ERROR">
+        <appender-ref ref="ConsoleAppender"/>
+        <appender-ref ref="GlobalExecutionAppender"/>
+    </root>
 
 </configuration>
