@@ -9,7 +9,7 @@ public class ScenarioContext {
     private static ScenarioContext instance;
     private Map<ScenarioKeys, Object> data;
 
-    public ScenarioContext() {
+    private ScenarioContext() {
         this.data = new HashMap<>();
     }
 

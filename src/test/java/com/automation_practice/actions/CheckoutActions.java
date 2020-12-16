@@ -18,6 +18,7 @@ import static org.hamcrest.Matchers.*;
 public class CheckoutActions {
 
     private ScenarioContext scenarioContext = ScenarioContext.getScenarioContext();
+
     private CommonActions commonActions = new CommonActions();
 
     public void clickOnProductType(ProductType productType) {
@@ -78,7 +79,6 @@ public class CheckoutActions {
                 .replaceAll("[^A-Z]", "").substring(1);
         assertThat("Reference number is not empty", referenceNumber, not(isEmptyString()));
         scenarioContext.saveData(ScenarioKeys.REFERENCE_NUMBER, referenceNumber);
-
     }
 
     public void verifyAddedProduct() {
@@ -103,10 +103,7 @@ public class CheckoutActions {
 
     public void productIsPresentInCart(String productTitle) {
         SummaryPage summaryPage = (SummaryPage) scenarioContext.getData(CURRENT_PAGE);
-
         commonActions.waitUntilElementDisplayed(summaryPage.getListOfProducts());
-
         assertThat("The product is displayed in cart",summaryPage.getProductByName(productTitle).isDisplayed(),is(true));
-
     }
 }
