@@ -7,7 +7,7 @@ Feature: Wishlist validation
 
 
   @ClearWishlist
-  Scenario: One porduct is displayed in wishlist page
+  Scenario: One product is displayed in wishlist page
     Given user clicks on T-Shirt category
     And the 'T-Shirt' page is displayed
     And user clicks on list button
