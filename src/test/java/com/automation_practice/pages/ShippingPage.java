@@ -14,7 +14,7 @@ public class ShippingPage extends CorePage {
     protected WebElement anchorElement;
 
     @ElementAccessor(elementName = "Terms of service button")
-    @FindBy(id = "cgv")
+    @FindBy(id = "uniform-cgv")
     private WebElement checkboxTerms;
 
     @ElementAccessor(elementName = "Checkout button")
